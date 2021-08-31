@@ -33,7 +33,8 @@ const config = process.env.NEXT_PUBLIC_APP_ID
     // before each of the apps is launched so this should always be
     // updated according to the app that is currently running.
     // see setup in package.json start scripts.
-    require('../firebase-config');
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('../firebase-config').firebaseConfig;
 
 // const USE_EMULATOR = true;
 const apps = getApps();
