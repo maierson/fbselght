@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { FirebaseApp, getApps, initializeApp } from "firebase/app";
+import { FirebaseApp, getApps, initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,14 +10,13 @@ import {
   signOut,
   updateProfile,
   User,
-  UserCredential
-} from "firebase/auth";
-import { getFirestore } from "firebase/firestore/lite";
-import { getFunctions } from "firebase/functions";
-import { getStorage } from "firebase/storage";
-import { firebaseConfig } from "../firebase-config";
-import { AuthUser } from "./auth-user";
-export * from "firebase/firestore/lite";
+  UserCredential,
+} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore/lite';
+import { getFunctions } from 'firebase/functions';
+import { getStorage } from 'firebase/storage';
+import { AuthUser } from './auth-user';
+export * from 'firebase/firestore/lite';
 
 const config = process.env.NEXT_PUBLIC_APP_ID
   ? {
@@ -34,7 +33,7 @@ const config = process.env.NEXT_PUBLIC_APP_ID
     // before each of the apps is launched so this should always be
     // updated according to the app that is currently running.
     // see setup in package.json start scripts.
-    firebaseConfig;
+    require('../firebase-config');
 
 // const USE_EMULATOR = true;
 const apps = getApps();
@@ -49,12 +48,12 @@ export const functions = getFunctions(firebaseApp);
 export async function registerFirebase(
   name: string,
   email: string,
-  password: string,
+  password: string
 ): Promise<void | User> {
   const credential: UserCredential = await createUserWithEmailAndPassword(
     auth,
     email,
-    password,
+    password
   );
 
   if (!credential) {
@@ -72,7 +71,7 @@ export async function registerFirebase(
 
 export function loginFirebase(
   email: string,
-  password: string,
+  password: string
 ): Promise<UserCredential> {
   return signInWithEmailAndPassword(auth, email, password);
 }
@@ -88,5 +87,3 @@ export function sendPasswordResetEmail(email: string, options) {
 export function sendEmailVerification(user: AuthUser) {
   return sendVerification(user);
 }
-
-
