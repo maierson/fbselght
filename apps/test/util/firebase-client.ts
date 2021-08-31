@@ -12,11 +12,11 @@ import {
   User,
   UserCredential,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore/lite';
+import { getFirestore } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
 import { AuthUser } from './auth-user';
-export * from 'firebase/firestore/lite';
+export * from 'firebase/firestore';
 
 const config = process.env.NEXT_PUBLIC_APP_ID
   ? {
