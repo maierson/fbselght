@@ -12,7 +12,7 @@ import {
   User,
   UserCredential,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, setLogLevel } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
 import { AuthUser } from './auth-user';
@@ -44,6 +44,8 @@ export const auth = getAuth(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
 export const storage = getStorage(firebaseApp, config.storageBucket);
 export const functions = getFunctions(firebaseApp);
+
+setLogLevel('debug');
 
 // auth
 export async function registerFirebase(
